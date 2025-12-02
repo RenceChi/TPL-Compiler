@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<!-- LINKING THE STYLESHEET HERE -->
+<BorderPane stylesheets="@style.css" fx:controller="CompilerController" prefHeight="650.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <!-- LEFT SIDE: Buttons -->
+    <left>
+        <VBox prefHeight="610.0" prefWidth="220.0" spacing="15.0" BorderPane.alignment="CENTER">
+            <children>
+                <Button fx:id="btnOpen" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleOpen" text="Open File">
+                    <padding>
+                        <Insets bottom="12.0" top="12.0" />
+                    </padding>
+                </Button>
+                <Button fx:id="btnLexical" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleLexical" text="Lexical Analysis">
+                    <padding>
+                        <Insets bottom="12.0" top="12.0" />
+                    </padding>
+                </Button>
+                <Button fx:id="btnSyntax" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleSyntax" text="Syntax Analysis">
+                    <padding>
+                        <Insets bottom="12.0" top="12.0" />
+                    </padding>
+                </Button>
+                <Button fx:id="btnSemantic" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleSemantic" text="Semantic Analysis">
+                    <padding>
+                        <Insets bottom="12.0" top="12.0" />
+                    </padding>
+                </Button>
+
+                <!-- Spacer to push Clear button down slightly or just separate it -->
+                <Label text="" />
+
+                <Button fx:id="btnClear" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleClear" text="Clear All">
+                    <padding>
+                        <Insets bottom="12.0" top="12.0" />
+                    </padding>
+                </Button>
+            </children>
+            <padding>
+                <Insets right="20.0" top="10.0" />
+            </padding>
+        </VBox>
+    </left>
+
+    <!-- CENTER: Text Areas -->
+    <center>
+        <VBox spacing="10.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label text="Analysis Result:">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                <TextArea fx:id="txtResult" editable="false" prefHeight="200.0" prefWidth="200.0" promptText="Analysis results will appear here...">
+                    <font>
+                        <Font name="Monospaced Regular" size="14.0" />
+                    </font>
+                </TextArea>
+                <Label text="Source Code:">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets top="10.0" />
+                    </VBox.margin>
+                </Label>
+                <TextArea fx:id="txtCode" editable="false" prefHeight="200.0" prefWidth="200.0" promptText="Source code will be displayed here..." VBox.vgrow="ALWAYS">
+                    <font>
+                        <Font name="Monospaced Regular" size="14.0" />
+                    </font>
+                </TextArea>
+            </children>
+            <padding>
+                <Insets left="10.0" />
+            </padding>
+        </VBox>
+    </center>
+</BorderPane>

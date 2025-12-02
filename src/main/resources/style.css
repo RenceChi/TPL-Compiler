@@ -1,0 +1,85 @@
+/* --- Modern Dark Theme for Compiler --- */
+
+/* Main Background */
+.root {
+    -fx-background-color: #2F3136; /* Dark Grey */
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+/* Labels (Text Headers) */
+.label {
+    -fx-text-fill: #DCDDDE; /* Light Grey Text */
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+/* Code Areas (The Editors) */
+.text-area {
+    -fx-control-inner-background: #202225; /* Darker Editor Background */
+    -fx-text-fill: #8be9fd; /* Cyan/Blue text for code */
+    -fx-prompt-text-fill: #72767d;
+    -fx-highlight-fill: #5865F2;
+    -fx-highlight-text-fill: #ffffff;
+    -fx-font-family: "Consolas", "Monospaced"; /* Code Font */
+    -fx-font-size: 14px;
+    -fx-background-radius: 5;
+    -fx-border-color: #40444B;
+    -fx-border-radius: 5;
+    -fx-border-width: 1px;
+}
+
+/* The actual text content area inside */
+.text-area .content {
+    -fx-background-color: #202225;
+    -fx-background-radius: 5;
+}
+
+/* --- Buttons --- */
+.button {
+    -fx-background-color: #5865F2; /* Blurple (Discord Blue) */
+    -fx-text-fill: white;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 10 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 3, 0, 0, 1);
+    -fx-transition: all 0.2s;
+}
+
+.button:hover {
+    -fx-background-color: #4752C4; /* Darker Blue on Hover */
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+
+.button:pressed {
+    -fx-background-color: #3C45A5;
+    -fx-effect: none;
+    -fx-translate-y: 1;
+}
+
+/* Disabled Buttons (Grayed out) */
+.button:disabled {
+    -fx-background-color: #36393F;
+    -fx-text-fill: #72767d;
+    -fx-opacity: 1.0;
+}
+
+/* --- Special Button Colors --- */
+
+/* Clear Button - Red */
+#btnClear {
+    -fx-background-color: #ED4245;
+}
+#btnClear:hover {
+    -fx-background-color: #C03537;
+}
+
+/* Open File Button - Green */
+#btnOpen {
+    -fx-background-color: #3BA55C;
+}
+#btnOpen:hover {
+    -fx-background-color: #2D7D46;
+}
