@@ -11,7 +11,6 @@ import java.util.List;
 
 public class CompilerController {
 
-    // Link elements from FXML using their fx:id
     @FXML private Button btnOpen;
     @FXML private Button btnLexical;
     @FXML private Button btnSyntax;
@@ -20,23 +19,35 @@ public class CompilerController {
     @FXML private TextArea txtResult;
     @FXML private TextArea txtCode;
 
-    // Logic Classes
+    // Logic Classes (Assumed to exist in your project)
     private FileManager fileManager;
     private LexicalAnalyzer lexicalAnalyzer;
     private SyntaxAnalyzer syntaxAnalyzer;
     private SemanticAnalyzer semanticAnalyzer;
 
     // Data State
-    private String sourceCode = "";
     private List<Token> tokenList = new ArrayList<>();
 
-    // This method runs automatically when the FXML is loaded
     @FXML
     public void initialize() {
         fileManager = new FileManager();
         lexicalAnalyzer = new LexicalAnalyzer();
         syntaxAnalyzer = new SyntaxAnalyzer();
         semanticAnalyzer = new SemanticAnalyzer();
+
+        // 1. Force the Code Area to be Typable
+        txtCode.setEditable(true);
+        resetButtonState();
+
+        // 2. Add Listener: Detect Manual Typing
+        // If user types, we must reset the pipeline because previous tokens are invalid
+        txtCode.textProperty().addListener((obs, oldVal, newVal) -> {
+            if (!newVal.equals(oldVal)) {
+                btnLexical.setDisable(newVal.trim().isEmpty());
+                btnSyntax.setDisable(true);
+                btnSemantic.setDisable(true);
+            }
+        });
     }
 
     @FXML
@@ -44,20 +55,17 @@ public class CompilerController {
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Java & Text Files", "*.java", "*.txt"));
 
-        // Get the stage from one of the buttons to show the dialog
         Stage stage = (Stage) btnOpen.getScene().getWindow();
         File selectedFile = fileChooser.showOpenDialog(stage);
 
         if (selectedFile != null) {
             try {
-                sourceCode = fileManager.readFile(selectedFile);
-                txtCode.setText(sourceCode);
-                txtResult.setText("File loaded successfully.");
+                String fileContent = fileManager.readFile(selectedFile);
+                txtCode.setText(fileContent);
+                txtResult.setText("File loaded: " + selectedFile.getName());
 
-                // Update UI State
+                // Reset buttons for new content
                 btnLexical.setDisable(false);
-                btnClear.setDisable(false);
-                btnOpen.setDisable(false);
                 btnSyntax.setDisable(true);
                 btnSemantic.setDisable(true);
             } catch (IOException ex) {
@@ -68,12 +76,22 @@ public class CompilerController {
 
     @FXML
     private void handleLexical() {
-        tokenList = lexicalAnalyzer.analyze(sourceCode);
+        // CRITICAL FIX: Read exactly what is on the screen right now
+        String currentSourceCode = txtCode.getText();
+
+        if (currentSourceCode.trim().isEmpty()) {
+            txtResult.setText("Source code is empty.");
+            return;
+        }
+
+        tokenList = lexicalAnalyzer.analyze(currentSourceCode);
         txtResult.setText(lexicalAnalyzer.getResultLog());
 
         btnLexical.setDisable(true);
         if (!tokenList.isEmpty()) {
             btnSyntax.setDisable(false);
+        } else {
+            txtResult.appendText("\nLexical Analysis failed or produced no tokens.");
         }
     }
 
@@ -99,9 +117,11 @@ public class CompilerController {
     private void handleClear() {
         txtResult.clear();
         txtCode.clear();
-        sourceCode = "";
         tokenList.clear();
+        resetButtonState();
+    }
 
+    private void resetButtonState() {
         btnOpen.setDisable(false);
         btnLexical.setDisable(true);
         btnSyntax.setDisable(true);

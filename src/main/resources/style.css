@@ -1,85 +1,94 @@
-/* --- Modern Dark Theme for Compiler --- */
+/* --- Zen Minimalist Dark Theme --- */
 
-/* Main Background */
+/* 1. Main Background */
 .root {
-    -fx-background-color: #2F3136; /* Dark Grey */
-    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-background-color: #1E1E1E; /* VS Code Dark Grey */
+    -fx-font-family: "Segoe UI", "Roboto", Helvetica, Arial, sans-serif;
 }
 
-/* Labels (Text Headers) */
+/* 2. Text Labels */
 .label {
-    -fx-text-fill: #DCDDDE; /* Light Grey Text */
-    -fx-font-weight: bold;
-    -fx-font-size: 14px;
+    -fx-text-fill: #9D9D9D;  /* Muted grey */
+    -fx-font-weight: normal;
+    -fx-font-size: 13px;
+    -fx-padding: 0 0 5 0;
 }
 
-/* Code Areas (The Editors) */
+/* 3. The Code Editors */
 .text-area {
-    -fx-control-inner-background: #202225; /* Darker Editor Background */
-    -fx-text-fill: #8be9fd; /* Cyan/Blue text for code */
-    -fx-prompt-text-fill: #72767d;
-    -fx-highlight-fill: #5865F2;
+    -fx-control-inner-background: #1E1E1E;
+    -fx-background-color: #1E1E1E;
+    -fx-text-fill: #D4D4D4;       /* Visible Light Text */
+    -fx-prompt-text-fill: #606060;
+
+    /* CRITICAL: Makes the cursor visible while typing */
+    -fx-caret-color: #D4D4D4;
+
+    /* Selection & Font */
+    -fx-highlight-fill: #264F78;
     -fx-highlight-text-fill: #ffffff;
-    -fx-font-family: "Consolas", "Monospaced"; /* Code Font */
+    -fx-font-family: "Consolas", "JetBrains Mono", "Monospaced";
     -fx-font-size: 14px;
-    -fx-background-radius: 5;
-    -fx-border-color: #40444B;
-    -fx-border-radius: 5;
+
+    /* Borders */
+    -fx-background-radius: 2;
+    -fx-border-color: #3E3E42;
+    -fx-border-radius: 2;
     -fx-border-width: 1px;
 }
 
-/* The actual text content area inside */
-.text-area .content {
-    -fx-background-color: #202225;
-    -fx-background-radius: 5;
+.text-area:focused {
+    -fx-border-color: #4A90E2; /* Blue border when typing */
 }
 
-/* --- Buttons --- */
+/* 4. Buttons (Flat Design) */
 .button {
-    -fx-background-color: #5865F2; /* Blurple (Discord Blue) */
-    -fx-text-fill: white;
-    -fx-background-radius: 5;
+    -fx-background-color: #2D2D30;
+    -fx-text-fill: #CCCCCC;
+    -fx-background-radius: 0;
+    -fx-border-color: #3E3E42;
+    -fx-border-width: 1px;
     -fx-cursor: hand;
-    -fx-font-weight: bold;
-    -fx-font-size: 14px;
-    -fx-padding: 10 20;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 3, 0, 0, 1);
-    -fx-transition: all 0.2s;
+    -fx-font-size: 13px;
+    -fx-padding: 8 24;
 }
 
 .button:hover {
-    -fx-background-color: #4752C4; /* Darker Blue on Hover */
-    -fx-scale-x: 1.02;
-    -fx-scale-y: 1.02;
+    -fx-background-color: #3E3E42;
+    -fx-text-fill: #FFFFFF;
 }
 
 .button:pressed {
-    -fx-background-color: #3C45A5;
-    -fx-effect: none;
-    -fx-translate-y: 1;
+    -fx-background-color: #007ACC;
+    -fx-border-color: #007ACC;
+    -fx-text-fill: white;
 }
 
-/* Disabled Buttons (Grayed out) */
+/* Disabled State */
 .button:disabled {
-    -fx-background-color: #36393F;
-    -fx-text-fill: #72767d;
+    -fx-background-color: #1E1E1E;
+    -fx-border-color: #2D2D30;
+    -fx-text-fill: #505050;
     -fx-opacity: 1.0;
 }
 
-/* --- Special Button Colors --- */
-
-/* Clear Button - Red */
+/* 5. Special Button Colors (Ghost Style) */
 #btnClear {
-    -fx-background-color: #ED4245;
+    -fx-background-color: #2D2D30;
+    -fx-border-color: #A13838;
+    -fx-text-fill: #D46A6A;
 }
 #btnClear:hover {
-    -fx-background-color: #C03537;
+    -fx-background-color: #A13838;
+    -fx-text-fill: #FFFFFF;
 }
 
-/* Open File Button - Green */
 #btnOpen {
-    -fx-background-color: #3BA55C;
+    -fx-background-color: #2D2D30;
+    -fx-border-color: #2E8B57;
+    -fx-text-fill: #5DBB86;
 }
 #btnOpen:hover {
-    -fx-background-color: #2D7D46;
+    -fx-background-color: #2E8B57;
+    -fx-text-fill: #FFFFFF;
 }
