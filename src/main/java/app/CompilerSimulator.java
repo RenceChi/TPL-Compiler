@@ -1,3 +1,5 @@
+package app;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,7 +16,7 @@ public class CompilerSimulator extends Application {
         try {
             // 1. Define the name of your FXML file
             // Make sure "CompilerView.fxml" is in src/main/resources
-            String fxmlFile = "CompilerView.fxml";
+            String fxmlFile = "view/CompilerView.fxml";
 
             // 2. Locate the file
             URL fxmlUrl = getClass().getResource("/" + fxmlFile);

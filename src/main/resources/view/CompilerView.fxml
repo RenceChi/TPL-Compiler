@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 
 <!-- Enhanced Modern Layout with Premium Buttons -->
-<BorderPane stylesheets="@style.css" fx:controller="CompilerController" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane stylesheets="@style.css" fx:controller="controller.CompilerController" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
     <padding>
         <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
     </padding>

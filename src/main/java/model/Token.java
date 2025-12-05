@@ -1,3 +1,5 @@
+package model;
+
 public class Token {
     private String value;
     private String type;
@@ -17,6 +19,6 @@ public class Token {
 
     @Override
     public String toString() {
-        return "Token: [" + value + "] \tType: " + type;
+        return "model.Token: [" + value + "] \tType: " + type;
     }
 }
