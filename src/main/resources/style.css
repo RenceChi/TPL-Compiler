@@ -1,94 +1,255 @@
-/* --- Zen Minimalist Dark Theme --- */
+/* --- Enhanced Modern Dark Theme with Premium Buttons --- */
 
 /* 1. Main Background */
 .root {
-    -fx-background-color: #1E1E1E; /* VS Code Dark Grey */
-    -fx-font-family: "Segoe UI", "Roboto", Helvetica, Arial, sans-serif;
+    -fx-background-color: #0D1117;
+    -fx-font-family: "Poppins", "Nunito", "Montserrat", "Segoe UI", "Roboto", Arial, sans-serif;
+    -fx-font-weight: 600;
 }
 
-/* 2. Text Labels */
+/* 2. Text Labels - Highly Visible */
 .label {
-    -fx-text-fill: #9D9D9D;  /* Muted grey */
-    -fx-font-weight: normal;
-    -fx-font-size: 13px;
-    -fx-padding: 0 0 5 0;
+    -fx-text-fill: #E6EDF3;
+    -fx-font-weight: 700;
+    -fx-font-size: 15px;
+    -fx-padding: 0 0 8 0;
+    -fx-font-family: "Poppins", "Nunito", "Montserrat", "Segoe UI", sans-serif;
 }
 
-/* 3. The Code Editors */
+/* 3. The Code Editors - Enhanced Contrast */
 .text-area {
-    -fx-control-inner-background: #1E1E1E;
-    -fx-background-color: #1E1E1E;
-    -fx-text-fill: #D4D4D4;       /* Visible Light Text */
-    -fx-prompt-text-fill: #606060;
+    -fx-control-inner-background: #161B22;
+    -fx-background-color: #161B22;
+    -fx-text-fill: #F0F6FC;
+    -fx-prompt-text-fill: #7D8590;
 
-    /* CRITICAL: Makes the cursor visible while typing */
-    -fx-caret-color: #D4D4D4;
+    /* Highly visible cursor */
+    -fx-caret-color: #58A6FF;
 
-    /* Selection & Font */
-    -fx-highlight-fill: #264F78;
-    -fx-highlight-text-fill: #ffffff;
-    -fx-font-family: "Consolas", "JetBrains Mono", "Monospaced";
-    -fx-font-size: 14px;
+    /* Selection colors */
+    -fx-highlight-fill: #1F6FEB;
+    -fx-highlight-text-fill: #FFFFFF;
+    -fx-font-family: "JetBrains Mono", "Fira Code", "Consolas", "Courier New", monospace;
+    -fx-font-size: 15px;
+    -fx-font-weight: 500;
 
-    /* Borders */
-    -fx-background-radius: 2;
-    -fx-border-color: #3E3E42;
-    -fx-border-radius: 2;
-    -fx-border-width: 1px;
+    /* Enhanced borders */
+    -fx-background-radius: 8;
+    -fx-border-color: #30363D;
+    -fx-border-radius: 8;
+    -fx-border-width: 1.5px;
+
+    /* Padding for better readability */
+    -fx-padding: 12;
 }
 
 .text-area:focused {
-    -fx-border-color: #4A90E2; /* Blue border when typing */
+    -fx-border-color: #58A6FF;
+    -fx-border-width: 2px;
 }
 
-/* 4. Buttons (Flat Design) */
+.text-area .content {
+    -fx-background-color: #161B22;
+}
+
+.text-area .scroll-pane {
+    -fx-background-color: #161B22;
+}
+
+.text-area .scroll-pane .viewport {
+    -fx-background-color: #161B22;
+}
+
+/* 4. Premium Buttons - Sleek and Modern */
 .button {
-    -fx-background-color: #2D2D30;
-    -fx-text-fill: #CCCCCC;
-    -fx-background-radius: 0;
-    -fx-border-color: #3E3E42;
-    -fx-border-width: 1px;
+    -fx-background-color: #21262D;
+    -fx-text-fill: #E6EDF3;
+    -fx-background-radius: 14;
+    -fx-border-color: #30363D;
+    -fx-border-radius: 14;
+    -fx-border-width: 1.5px;
     -fx-cursor: hand;
-    -fx-font-size: 13px;
-    -fx-padding: 8 24;
+    -fx-font-size: 14px;
+    -fx-font-weight: 700;
+    -fx-font-family: "Poppins", "Nunito", "Montserrat", "Segoe UI", sans-serif;
+    -fx-padding: 14 28;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0, 0, 3);
 }
 
 .button:hover {
-    -fx-background-color: #3E3E42;
+    -fx-background-color: #30363D;
     -fx-text-fill: #FFFFFF;
+    -fx-border-color: #484F58;
+    -fx-scale-y: 1.03;
+    -fx-scale-x: 1.03;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 12, 0, 0, 4);
 }
 
 .button:pressed {
-    -fx-background-color: #007ACC;
-    -fx-border-color: #007ACC;
-    -fx-text-fill: white;
+    -fx-scale-y: 0.97;
+    -fx-scale-x: 0.97;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 6, 0, 0, 2);
 }
 
 /* Disabled State */
 .button:disabled {
-    -fx-background-color: #1E1E1E;
-    -fx-border-color: #2D2D30;
-    -fx-text-fill: #505050;
-    -fx-opacity: 1.0;
+    -fx-background-color: #161B22;
+    -fx-border-color: #21262D;
+    -fx-text-fill: #484F58;
+    -fx-opacity: 0.6;
+    -fx-effect: none;
 }
 
-/* 5. Special Button Colors (Ghost Style) */
-#btnClear {
-    -fx-background-color: #2D2D30;
-    -fx-border-color: #A13838;
-    -fx-text-fill: #D46A6A;
-}
-#btnClear:hover {
-    -fx-background-color: #A13838;
-    -fx-text-fill: #FFFFFF;
-}
-
+/* 5. Open File Button - Emerald Accent */
 #btnOpen {
-    -fx-background-color: #2D2D30;
-    -fx-border-color: #2E8B57;
-    -fx-text-fill: #5DBB86;
-}
-#btnOpen:hover {
-    -fx-background-color: #2E8B57;
+    -fx-background-color: linear-gradient(to bottom right, #2EA043, #238636);
+    -fx-border-color: #2EA043;
     -fx-text-fill: #FFFFFF;
+    -fx-effect: dropshadow(gaussian, rgba(46, 160, 67, 0.4), 12, 0, 0, 3);
+}
+
+#btnOpen:hover {
+    -fx-background-color: linear-gradient(to bottom right, #3FB950, #2EA043);
+    -fx-border-color: #3FB950;
+    -fx-effect: dropshadow(gaussian, rgba(46, 160, 67, 0.6), 16, 0, 0, 4);
+}
+
+#btnOpen:pressed {
+    -fx-background-color: linear-gradient(to bottom right, #238636, #1A6B2B);
+    -fx-effect: dropshadow(gaussian, rgba(46, 160, 67, 0.3), 8, 0, 0, 2);
+}
+
+#btnOpen:disabled {
+    -fx-background-color: #161B22;
+    -fx-border-color: #21262D;
+    -fx-text-fill: #484F58;
+    -fx-effect: none;
+}
+
+/* 6. Lexical Analysis - Ocean Blue */
+#btnLexical {
+    -fx-background-color: linear-gradient(to bottom right, #1F6FEB, #1558D6);
+    -fx-border-color: #1F6FEB;
+    -fx-text-fill: #FFFFFF;
+    -fx-effect: dropshadow(gaussian, rgba(31, 111, 235, 0.4), 12, 0, 0, 3);
+}
+
+#btnLexical:hover {
+    -fx-background-color: linear-gradient(to bottom right, #388BFD, #1F6FEB);
+    -fx-border-color: #388BFD;
+    -fx-effect: dropshadow(gaussian, rgba(31, 111, 235, 0.6), 16, 0, 0, 4);
+}
+
+#btnLexical:pressed {
+    -fx-background-color: linear-gradient(to bottom right, #1558D6, #0D419D);
+    -fx-effect: dropshadow(gaussian, rgba(31, 111, 235, 0.3), 8, 0, 0, 2);
+}
+
+#btnLexical:disabled {
+    -fx-background-color: #161B22;
+    -fx-border-color: #21262D;
+    -fx-text-fill: #484F58;
+    -fx-effect: none;
+}
+
+/* 7. Syntax Analysis - Amber Gold */
+#btnSyntax {
+    -fx-background-color: linear-gradient(to bottom right, #BB8009, #9E6A03);
+    -fx-border-color: #BB8009;
+    -fx-text-fill: #FFFFFF;
+    -fx-effect: dropshadow(gaussian, rgba(187, 128, 9, 0.4), 12, 0, 0, 3);
+}
+
+#btnSyntax:hover {
+    -fx-background-color: linear-gradient(to bottom right, #D29922, #BB8009);
+    -fx-border-color: #D29922;
+    -fx-effect: dropshadow(gaussian, rgba(187, 128, 9, 0.6), 16, 0, 0, 4);
+}
+
+#btnSyntax:pressed {
+    -fx-background-color: linear-gradient(to bottom right, #9E6A03, #845306);
+    -fx-effect: dropshadow(gaussian, rgba(187, 128, 9, 0.3), 8, 0, 0, 2);
+}
+
+#btnSyntax:disabled {
+    -fx-background-color: #161B22;
+    -fx-border-color: #21262D;
+    -fx-text-fill: #484F58;
+    -fx-effect: none;
+}
+
+/* 8. Semantic Analysis - Royal Purple */
+#btnSemantic {
+    -fx-background-color: linear-gradient(to bottom right, #8957E5, #6E40C9);
+    -fx-border-color: #8957E5;
+    -fx-text-fill: #FFFFFF;
+    -fx-effect: dropshadow(gaussian, rgba(137, 87, 229, 0.4), 12, 0, 0, 3);
+}
+
+#btnSemantic:hover {
+    -fx-background-color: linear-gradient(to bottom right, #A371F7, #8957E5);
+    -fx-border-color: #A371F7;
+    -fx-effect: dropshadow(gaussian, rgba(137, 87, 229, 0.6), 16, 0, 0, 4);
+}
+
+#btnSemantic:pressed {
+    -fx-background-color: linear-gradient(to bottom right, #6E40C9, #553098);
+    -fx-effect: dropshadow(gaussian, rgba(137, 87, 229, 0.3), 8, 0, 0, 2);
+}
+
+#btnSemantic:disabled {
+    -fx-background-color: #161B22;
+    -fx-border-color: #21262D;
+    -fx-text-fill: #484F58;
+    -fx-effect: none;
+}
+
+/* 9. Clear All Button - Danger Red */
+#btnClear {
+    -fx-background-color: linear-gradient(to bottom right, #DA3633, #B62324);
+    -fx-border-color: #DA3633;
+    -fx-text-fill: #FFFFFF;
+    -fx-effect: dropshadow(gaussian, rgba(218, 54, 51, 0.4), 12, 0, 0, 3);
+}
+
+#btnClear:hover {
+    -fx-background-color: linear-gradient(to bottom right, #F85149, #DA3633);
+    -fx-border-color: #F85149;
+    -fx-effect: dropshadow(gaussian, rgba(218, 54, 51, 0.6), 16, 0, 0, 4);
+}
+
+#btnClear:pressed {
+    -fx-background-color: linear-gradient(to bottom right, #B62324, #8E1A1D);
+    -fx-effect: dropshadow(gaussian, rgba(218, 54, 51, 0.3), 8, 0, 0, 2);
+}
+
+#btnClear:disabled {
+    -fx-background-color: #161B22;
+    -fx-border-color: #21262D;
+    -fx-text-fill: #484F58;
+    -fx-effect: none;
+}
+
+/* 10. Scrollbars - Matching theme */
+.scroll-bar {
+    -fx-background-color: #0D1117;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #30363D;
+    -fx-background-radius: 6;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #484F58;
+}
+
+.scroll-bar .track {
+    -fx-background-color: #161B22;
+    -fx-background-radius: 6;
+}
+
+/* 11. VBox container styling */
+.vbox {
+    -fx-background-color: transparent;
 }
