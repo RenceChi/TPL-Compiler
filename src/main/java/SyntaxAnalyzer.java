@@ -19,10 +19,10 @@ public class SyntaxAnalyzer {
             Token t = tokens.get(i);
 
             // 1. Found Start of a potential declaration
-            if (t.getType().equals("KEYWORD_TYPE")) {
+            // UPDATED: checking for DATA_TYPE
+            if (t.getType().equals("DATA_TYPE")) {
 
                 // 2. SAFETY CHECK: Ignore types inside method signatures (like 'String[] args')
-                // We search for a semicolon, but if we hit '{', '}', or ')' first, we abort.
                 int semiColonIndex = -1;
                 for (int j = i + 1; j < tokens.size(); j++) {
                     String val = tokens.get(j).getValue();
@@ -30,30 +30,26 @@ public class SyntaxAnalyzer {
                         semiColonIndex = j;
                         break;
                     }
-                    // Stop if we hit a method boundary or parameter list end
                     if (val.equals("{") || val.equals("}") || val.equals(")")) {
                         break;
                     }
                 }
 
                 if (semiColonIndex == -1) {
-                    // This was likely 'public static void main...' or a parameter. Ignore it.
                     continue;
                 }
 
                 // 3. Determine if it's an Array Declaration (e.g., int[] x)
-                // If next token is '[' and token after is ']', we skip them.
                 int nameIndex = i + 1;
                 boolean isArray = false;
                 if (nameIndex < tokens.size() && tokens.get(nameIndex).getValue().equals("[")) {
                     if (nameIndex + 1 < tokens.size() && tokens.get(nameIndex + 1).getValue().equals("]")) {
-                        nameIndex += 2; // Move identifier expectation forward
+                        nameIndex += 2;
                         isArray = true;
                     }
                 }
 
                 // 4. Check Declaration Logic
-                // We pass 'nameIndex' so the checker knows where the Variable Name is supposed to be
                 if (checkStatement(tokens, i, nameIndex, semiColonIndex, isArray)) {
                     atLeastOneValid = true;
                 } else {
@@ -100,7 +96,9 @@ public class SyntaxAnalyzer {
         // C. If not simple, it must be Initialization (int x = 10;)
         // The token after Identifier MUST be '='
         Token tEq = tokens.get(nameIndex + 1);
-        if (!tEq.getType().equals("OPERATOR_ASSIGN")) {
+
+        // UPDATED: checking for ASSIGNMENT_OPERATOR
+        if (!tEq.getType().equals("ASSIGNMENT_OPERATOR")) {
             resultLog.append("Syntax Error: Expected '=' after variable name '").append(tName.getValue()).append("'\n");
             return false;
         }

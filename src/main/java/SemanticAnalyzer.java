@@ -19,7 +19,8 @@ public class SemanticAnalyzer {
             Token t = tokens.get(i);
 
             //Found a Variable Declaration start
-            if (t.getType().equals("KEYWORD_TYPE")) {
+            // UPDATED: checking for DATA_TYPE
+            if (t.getType().equals("DATA_TYPE")) {
 
                 //Find the end of this statement (the ';')
                 int semiColonIndex = -1;
@@ -36,7 +37,8 @@ public class SemanticAnalyzer {
                     //Look for an '=' sign inside this statement
                     int assignIndex = -1;
                     for (int k = i + 1; k < semiColonIndex; k++) {
-                        if (tokens.get(k).getType().equals("OPERATOR_ASSIGN")) {
+                        // UPDATED: checking for ASSIGNMENT_OPERATOR
+                        if (tokens.get(k).getType().equals("ASSIGNMENT_OPERATOR")) {
                             assignIndex = k;
                             break;
                         }
@@ -49,8 +51,6 @@ public class SemanticAnalyzer {
                     if (assignIndex != -1) {
                         // --- Case A: Initialization (int x = 10;) ---
 
-                        // The value is the token immediately AFTER the '='
-                        // (We add a check to ensure we don't go out of bounds)
                         if (assignIndex + 1 < semiColonIndex) {
                             Token valToken = tokens.get(assignIndex + 1);
                             String valueType = valToken.getType();
@@ -74,14 +74,12 @@ public class SemanticAnalyzer {
                                 resultLog.append("Variable '").append(varName).append("' is semantically valid.\n");
                             }
                         } else {
-                            // Syntax analyzer should catch this, but just in case:
                             resultLog.append("Semantic Error: No value found after '=' for '").append(varName).append("'.\n");
                             isSemanticValid = false;
                         }
 
                     } else {
                         // --- Case B: Declaration Only (int x;) ---
-                        // No '=' means no value to check. It is valid by default.
                         resultLog.append("Variable '").append(varName).append("' declared (no value to check).\n");
                     }
 

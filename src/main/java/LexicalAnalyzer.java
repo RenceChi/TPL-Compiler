@@ -45,9 +45,14 @@ public class LexicalAnalyzer {
     }
 
     private String identifyToken(String str) {
-        if (str.matches("int|String|double|float|char|boolean")) return "KEYWORD_TYPE";
+        // UPDATED: Changed KEYWORD_TYPE to DATA_TYPE
+        if (str.matches("int|String|double|float|char|boolean")) return "DATA_TYPE";
+
         if (str.matches("package|import|public|private|protected|class|static|void|main|new|return")) return "KEYWORD_IGNORE";
-        if (str.equals("=")) return "OPERATOR_ASSIGN";
+
+        // UPDATED: Changed OPERATOR_ASSIGN to ASSIGNMENT_OPERATOR
+        if (str.equals("=")) return "ASSIGNMENT_OPERATOR";
+
         if (str.equals(";")) return "DELIMITER";
         if (str.matches("[\\{\\}\\(\\)\\[\\]]")) return "DELIMITER_BLOCK";
         if (str.matches("\".*\"")) return "LITERAL_STRING";
