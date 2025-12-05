@@ -64,6 +64,8 @@ public class SemanticAnalyzer {
                             else if (declType.equals("String") && !valueType.equals("LITERAL_STRING")) mismatch = true;
                             else if (declType.equals("boolean") && !valueType.equals("LITERAL_BOOLEAN")) mismatch = true;
                             else if (declType.equals("char") && !valueType.equals("LITERAL_CHAR")) mismatch = true;
+                            else if (declType.equals("float") && !valueType.equals("LITERAL_NUMBER")) mismatch = true;
+
 
                             if (mismatch) {
                                 resultLog.append("Semantic Error: Type mismatch for '").append(varName)
